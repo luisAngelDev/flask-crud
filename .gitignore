@@ -1,15 +1,21 @@
-# Entorno virtual
+# Entornos virtuales
 venv/
-.env
+env/
 
 # Archivos de Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Archivos de entorno y configuración local
+# Archivos de configuración
 *.env
 *.log
 
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+# Archivos de VSCode o IDEs
+.vscode/
+.idea/
