@@ -60,6 +60,31 @@ def crear_usuario():
     return jsonify(nuevo), 201
 
 
+@app.route("/usuarios/<int:usuario_id>", methods=["PUT"])
+def actualizar_usuario(usuario_id):
+    usuarios = leer_datos()
+    datos_actualizados = request.get_json()
+
+    for u in usuarios:
+        if u["id"] == usuario_id:
+            u.update(datos_actualizados)
+            guardar_datos(usuarios)
+            return jsonify(u)
+
+    return jsonify({"error": "Usuario no encontrado"}), 404
+
+
+@app.route("/usuarios/<int:usuario_id>", methods=["DELETE"])
+def eliminar_usuario(usuario_id):
+    usuarios = leer_datos()
+    usuarios_filtrados = [u for u in usuarios if u["id"] != usuario_id]
+
+    if len(usuarios_filtrados) == len(usuarios):
+        return jsonify({"error": "Usuario no encontrado"}), 404
+
+    guardar_datos(usuarios_filtrados)
+    return jsonify({"mensaje": "Usuario eliminado"})
+
 
 
 # Punto de entrada
