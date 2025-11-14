@@ -15,5 +15,26 @@ html>
   </style>
 </head>
 <body>
-    
+  <header class="mb-4">
+    <h1 class="h3">Flask CRUD — Página de inicio</h1>
+    <p class="text-muted">Interfaz básica para probar tu API REST en desarrollo.</p>
+  </header>
+
+  <section class="mb-4">
+    <h2 class="h5">Descripción</h2>
+    <p>Esta página sirve para:</p>
+    <ul>
+      <li>Probar los endpoints del API (GET / POST / PUT / DELETE).</li>
+      <li>Crear rápidamente un nuevo registro con el formulario.</li>
+      <li>Mostrar los registros actuales usando `fetch`.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h6">Acciones rápidas</h2>
+    <div class="d-flex gap-2 flex-wrap">
+      <button class="btn btn-primary" onclick="cargarTodos()">Cargar todos (GET /items)</button>
+      <button class="btn btn-outline-secondary" onclick="limpiarLista()">Limpiar vista</button>
+    </div>
+  </section>
 </body>
