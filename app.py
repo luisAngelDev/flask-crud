@@ -2,41 +2,41 @@ from flask import Flask, jsonify, request
 import json
 import os
 
-# Crear la aplicación Flask
-app = Flask(__name__)
+# # Crear la aplicación Flask
+# app = Flask(__name__)
 
-# Ruta inicial (home)
-@app.route('/')
-def home():
-    return jsonify({
-        "message": "Bienvenido a mi API CRUD con Flask",
-        "status": "running"
-    })
-
-
-# Ejemplo de endpoint tipo GET
-@app.route('/saludo/<nombre>', methods=['GET'])
-def saludar(nombre):
-    return jsonify({
-        "saludo": f"Hola {nombre}, bienvenido a la API de Flask!"
-    })
-
-DATA_FILE = "data.json"
-
-# Crear el archivo si no existe
-if not os.path.exists(DATA_FILE):
-    with open(DATA_FILE, "w") as f:
-        json.dump([], f)
+# # Ruta inicial (home)
+# @app.route('/')
+# def home():
+#     return jsonify({
+#         "message": "Bienvenido a mi API CRUD con Flask",
+#         "status": "running"
+#     })
 
 
-def leer_datos():
-    with open(DATA_FILE, "r") as f:
-        return json.load(f)
+# # Ejemplo de endpoint tipo GET
+# @app.route('/saludo/<nombre>', methods=['GET'])
+# def saludar(nombre):
+#     return jsonify({
+#         "saludo": f"Hola {nombre}, bienvenido a la API de Flask!"
+#     })
+
+# DATA_FILE = "data.json"
+
+# # Crear el archivo si no existe
+# if not os.path.exists(DATA_FILE):
+#     with open(DATA_FILE, "w") as f:
+#         json.dump([], f)
 
 
-def guardar_datos(datos):
-    with open(DATA_FILE, "w") as f:
-        json.dump(datos, f, indent=4)
+# def leer_datos():
+#     with open(DATA_FILE, "r") as f:
+#         return json.load(f)
+
+
+# def guardar_datos(datos):
+#     with open(DATA_FILE, "w") as f:
+#         json.dump(datos, f, indent=4)
 
 
 # @app.route("/usuarios", methods=["GET"])
