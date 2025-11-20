@@ -49,6 +49,16 @@ def agregar():
     return render_template("add_pet.html")
 
 
+@app.route("/eliminar/<int:pet_id>")
+def eliminar(pet_id):
+    mascotas = cargar_datos()
+    mascotas = [m for m in mascotas if m["id"] != pet_id]
+    guardar_datos(mascotas)
+    return redirect(url_for("index"))
+
+
+
+
 # Punto de entrada
 if __name__ == '__main__':
     app.run(debug=True)
