@@ -58,6 +58,38 @@ def eliminar(pet_id):
 
 
 
+@app.route("/api/pets")
+def api_get_pets():
+    return jsonify(cargar_datos())
+
+
+@app.route("/api/pets/<int:pet_id>")
+def api_get_pet(pet_id):
+    mascotas = cargar_datos()
+    pet = next((m for m in mascotas if m["id"] == pet_id), None)
+    return jsonify(pet if pet else {"error": "No encontrado"})
+
+
+@app.route("/api/pets", methods=["POST"])
+def api_create_pet():
+    mascotas = cargar_datos()
+    data = request.json
+
+    nueva = {
+        "id": (mascotas[-1]["id"] + 1) if mascotas else 1,
+        "nombre": data["nombre"],
+        "tipo": data["tipo"],
+        "edad": data["edad"],
+        "vacunado": data["vacunado"]
+    }
+
+    mascotas.append(nueva)
+    guardar_datos(mascotas)
+
+    return jsonify(nueva), 201
+
+
+
 
 # Punto de entrada
 if __name__ == '__main__':
