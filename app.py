@@ -90,6 +90,40 @@ def api_create_pet():
 
 
 
+@app.route("/api/pets", methods=["POST"])
+def api_create_pet():
+    mascotas = cargar_datos()
+    data = request.json
+
+    nueva = {
+        "id": (mascotas[-1]["id"] + 1) if mascotas else 1,
+        "nombre": data["nombre"],
+        "tipo": data["tipo"],
+        "edad": data["edad"],
+        "vacunado": data["vacunado"]
+    }
+
+    mascotas.append(nueva)
+    guardar_datos(mascotas)
+
+    return jsonify(nueva), 201
+
+
+@app.route("/api/pets/<int:pet_id>", methods=["PUT"])
+def api_update_pet(pet_id):
+    mascotas = cargar_datos()
+    data = request.json
+
+    for m in mascotas:
+        if m["id"] == pet_id:
+            m["nombre"] = data.get("nombre", m["nombre"])
+            m["tipo"] = data.get("tipo", m["tipo"])
+            m["edad"] = data.get("edad", m["edad"])
+            m["vacunado"] = data.get("vacunado", m["vacunado"])
+            guardar_datos(mascotas)
+            return jsonify(m)
+
+    return jsonify({"error": "No encontrado"}), 404
 
 # Punto de entrada
 if __name__ == '__main__':
