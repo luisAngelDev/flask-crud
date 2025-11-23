@@ -125,8 +125,18 @@ def api_update_pet(pet_id):
 
     return jsonify({"error": "No encontrado"}), 404
 
+@app.route("/api/pets/<int:pet_id>", methods=["DELETE"])
+def api_delete_pet(pet_id):
+    mascotas = cargar_datos()
+    nuevas = [m for m in mascotas if m["id"] != pet_id]
+
+    if len(nuevas) == len(mascotas):
+        return jsonify({"error": "No encontrado"}), 404
+
+    guardar_datos(nuevas)
+    return jsonify({"message": "Eliminado"})
+
 # Punto de entrada
 if __name__ == '__main__':
     app.run(debug=True)
 
-    
