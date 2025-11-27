@@ -2,11 +2,18 @@ from flask import Flask, jsonify, request
 import json
 import os
 
-# Crear la aplicación Flask
 app = Flask(__name__)
 
-# Ruta del archivo JSON
-DATA_FILE = "pets.json"
+@app.route("/")
+def index():
+    return jsonify({
+        "mensaje": "Microservicio Flask funcionando",
+        "endpoints": ["/scrape", "/status"]
+    })
+
+@app.route("/status")
+def status():
+    return jsonify({"status": "ok"})
 
 
 # Punto de entrada
