@@ -15,6 +15,15 @@ def index():
 def status():
     return jsonify({"status": "ok"})
 
+@app.route("/scrape")
+def scrape():
+    """
+    Endpoint que ejecuta el scraping simple.
+    Mañana decides qué scrapea exactamente.
+    """
+    resultado = obtener_datos()
+    return jsonify(resultado)
+
 
 # Punto de entrada
 if __name__ == '__main__':
