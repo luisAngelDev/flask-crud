@@ -28,6 +28,17 @@
 
 ## 📂 Estructura del proyecto
 
+mi_microservicio/
+│
+├── app.py
+├── requirements.txt
+│
+├── scraper/
+│   ├── __init__.py
+│   └── scraper.py
+│
+└── data/
+    └── ejemplo.json
 
 
 ## 👨‍💻 Autor
