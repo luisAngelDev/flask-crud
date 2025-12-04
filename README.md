@@ -28,6 +28,7 @@
 
 ## 📂 Estructura del proyecto
 
+```bash
 mi_microservicio/
 │
 ├── app.py
@@ -39,7 +40,7 @@ mi_microservicio/
 │
 └── data/
     └── ejemplo.json
-
+```
 
 ## 👨‍💻 Autor
 
