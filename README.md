@@ -25,28 +25,6 @@
 
 ## ⚙️ Instalación
 
-Clonar el repositorio:
-
-git clone https://github.com/tu_usuario/tu_repo.git
-cd tu_repo
-
-
-Crear y activar un entorno virtual:
-
-python -m venv venv
-source venv/bin/activate       # Linux/Mac
-venv\Scripts\activate          # Windows
-
-
-Instalar dependencias:
-
-pip install -r requirements.txt
-
-
-Ejecutar el proyecto:
-
-python app.py
-
 
 ## 📂 Estructura del proyecto
 
