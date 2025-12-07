@@ -25,6 +25,36 @@
 
 ## ⚙️ Instalación
 
+Sigue estos pasos para correr el proyecto en tu máquina local:
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/luisAngelDev/django-scraping.git
+   cd django-scraping
+   ```
+
+2. Crea y activa un entorno virtual:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+3. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Inicia el servidor:
+   ```bash
+   python convertir_ubigeo.py
+   ```
+
+5. Inicia el servidor:
+   ```bash
+   python scrapers.py
+   ```
+
+
 
 ## 📂 Estructura del proyecto
 
