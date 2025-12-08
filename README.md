@@ -29,7 +29,7 @@ Sigue estos pasos para correr el proyecto en tu máquina local:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/luisAngelDev/django-scraping.git
+   git clone https://github.com/luisAngelDev/flask-crud.git
    cd django-scraping
    ```
 
@@ -46,7 +46,7 @@ Sigue estos pasos para correr el proyecto en tu máquina local:
 
 4. Inicia el servidor:
    ```bash
-   python convertir_ubigeo.py
+   python app.py
    ```
 
 5. Inicia el servidor:
