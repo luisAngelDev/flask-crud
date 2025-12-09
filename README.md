@@ -1,5 +1,5 @@
 # web con metricas y contadores
-
+Microservicio desarrollado con Flask, que incluye endpoints básicos y un módulo de scraping.
 
 
 ## Vista previa
