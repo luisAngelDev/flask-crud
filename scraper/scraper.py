@@ -3,9 +3,37 @@ from bs4 import BeautifulSoup
 
 def obtener_datos():
     """
-   aqui ira mi scraper para regresar un json
+    Hace una solicitud HTTP y extrae datos HTML.
+    Retorna un dict (JSON serializable).
     """
+
+    url = "https://ejemplo.com"   # <-- aquí pondrás la URL real
+
+    try:
+        # 1. Hacer la petición
+        response = requests.get(url, timeout=10)
+
+        # 2. Validar estado
+        response.raise_for_status()
+
+    except requests.exceptions.RequestException as e:
+        # Si falla la conexión
+        return {
+            "error": "No se pudo obtener la página",
+            "detalles": str(e)
+        }
+
+    # 3. Parsear HTML
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # 4. Extraer datos
+    #    Aquí solo dejo un ejemplo genérico
+    titulo = soup.title.text.strip() if soup.title else None
+
+    # 5. Construir la respuesta JSON
     datos = {
-        "esto lueog lo modifico para regresar datos."
+        "titulo_pagina": titulo,
+        "mensaje": "Scraping funcionando. Aquí irán los datos reales."
     }
+
     return datos
