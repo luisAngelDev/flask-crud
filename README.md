@@ -1,7 +1,6 @@
 # API REST con Flask y consulta con sraping
 
-Proyecto construido con Flask que implementa una API ligera diseñada para ejecutar tareas de scraping y devolver los datos procesados en formato JSON. La arquitectura está pensada para mantener el scraper desacoplado del framework, permitiendo agregar nuevos scrapers sin afectar la estructura principal del microservicio.
-
+Proyecto construido con Flask que implementa una API diseñada para ejecutar tareas de scraping y devolver los datos procesados en formato JSON. 
 
 
 ## Vista previa
