@@ -3,9 +3,6 @@
 Proyecto construido con Flask que implementa una API diseñada para ejecutar tareas de scraping y devolver los datos procesados en formato JSON. 
 
 
-## Vista previa
-![Vista previa]
-
 ## Características
 
 - API REST construida con Flask
