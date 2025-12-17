@@ -3,11 +3,10 @@ from bs4 import BeautifulSoup
 
 def obtener_datos():
     """
-    Hace una solicitud HTTP y extrae datos HTML.
-    Retorna un dict (JSON serializable).
+
     """
 
-    url = "https://ejemplo.com"   # <-- aquí pondrás la URL real
+    url = "https://ejemplo.com"
 
     try:
         # 1. Hacer la petición
