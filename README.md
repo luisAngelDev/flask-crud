@@ -1,4 +1,4 @@
-# API REST con Flask y consulta con sraping
+# Api Rest con Flask y consulta con sraping
 
 Proyecto construido con Flask que implementa una API diseñada para ejecutar tareas de scraping y devolver los datos procesados en formato JSON. 
 
