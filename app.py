@@ -18,8 +18,7 @@ def status():
 @app.route("/scrape")
 def scrape():
     """
-    Endpoint que ejecuta el scraping simple.
-    Mañana decides qué scrapea exactamente.
+    Endpoint que ejecuta el scraping
     """
     resultado = obtener_datos()
     return jsonify(resultado)
