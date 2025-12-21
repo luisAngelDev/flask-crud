@@ -36,3 +36,30 @@ def obtener_datos():
     }
 
     return datos
+
+
+
+URL = "https://opm-digemid.minsa.gob.pe/#/consulta-producto"
+
+
+def scrape_medicamento(nombre_producto: str):
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")        # sin abrir navegador
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options
+    )
+
+    resultados = []
+
+    try:
+        driver.get(URL)
+
+       
+    finally:
+        driver.quit()
+
+    return resultados
