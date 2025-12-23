@@ -26,7 +26,18 @@ def scraper_medicamento(nombre_producto: str):
     resultados = []
 
     try:
-        driver.get(URL)
+       driver.get(URL)
+       
+       wait = WebDriverWait(driver, 20)
+       
+       input_busqueda = wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "input[type='text']")
+                )
+            )
+       input_busqueda.clear()
+       input_busqueda.send_keys(nombre_producto)
+       input_busqueda.send_keys(Keys.ENTER)
 
        
     finally:
