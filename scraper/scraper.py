@@ -39,6 +39,16 @@ def scraper_medicamento(nombre_producto: str):
        input_busqueda.send_keys(nombre_producto)
        input_busqueda.send_keys(Keys.ENTER)
 
+       wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "table tbody tr")
+            )
+        )
+       
+       time.sleep(2)
+       
+       filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+
        
     finally:
         driver.quit()
