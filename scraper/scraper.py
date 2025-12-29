@@ -68,3 +68,9 @@ def scraper_medicamento(nombre_producto: str):
         driver.quit()
 
     return resultados
+
+
+if __name__ == "__main__":
+    data = scraper_medicamento("paracetamol")
+    for d in data[:3]:
+        print(d)
