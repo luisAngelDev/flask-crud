@@ -20,7 +20,7 @@ def scrape():
     """
     Endpoint que ejecuta el scraping
     """
-    resultado = obtener_datos()
+    resultado = obtener_medicamento()
     return jsonify(resultado)
 
 

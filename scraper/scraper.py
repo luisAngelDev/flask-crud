@@ -11,7 +11,7 @@ import time
 URL = "https://opm-digemid.minsa.gob.pe/#/consulta-producto"
 
 
-def scraper_medicamento(nombre_producto: str):
+def obtener_medicamento(nombre_producto: str):
 
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")        # sin abrir navegador
@@ -56,6 +56,6 @@ def scraper_medicamento(nombre_producto: str):
 
 
 if __name__ == "__main__":
-    data = scraper_medicamento("paracetamol")
+    data = obtener_medicamento("paracetamol")
     for d in data[:3]:
         print(d)
