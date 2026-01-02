@@ -46,9 +46,16 @@ def obtener_medicamento(nombre_producto: str):
         )
        
        time.sleep(2)
-       
-       
 
+       filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+       
+       for fila in filas:
+        columnas = fila.find_elements(By.TAG_NAME, "td")
+
+        if len(columnas) < 6:
+            continue
+       
+       
     finally:
         driver.quit()
 
