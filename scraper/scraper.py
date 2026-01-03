@@ -54,6 +54,15 @@ def obtener_medicamento(nombre_producto: str):
 
         if len(columnas) < 6:
             continue
+        
+        resultados.append({
+                "producto": columnas[0].text.strip(),
+                "registro_sanitario": columnas[1].text.strip(),
+                "titular": columnas[2].text.strip(),
+                "forma_farmaceutica": columnas[3].text.strip(),
+                "estado": columnas[4].text.strip(),
+                "fecha_vencimiento": columnas[5].text.strip()
+            })
        
        
     finally:
