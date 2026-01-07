@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
-URL = "https://opm-digemid.minsa.gob.pe/#/consulta-producto"
+BASE_URL = "https://opm-digemid.minsa.gob.pe/#/consulta-producto"
 
 
 def obtener_medicamento(
@@ -19,7 +19,7 @@ def obtener_medicamento(
         ):
     
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")              # sin abrir navegador
+    options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
@@ -31,6 +31,30 @@ def obtener_medicamento(
     )
 
     resultados = []
+
+    try:
+        driver.get(BASE_URL)
+        wait = WebDriverWait(driver, 20)
+
+        input_producto = wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "ng-autocomplete input")
+            )
+        )
+
+        input_producto.clear()
+        input_producto.send_keys(producto)
+
+        # esperar lista autocomplete
+        opciones = wait.until(
+            EC.presence_of_all_elements_located(
+                (By.CSS_SELECTOR, ".ng-dropdown-panel .ng-option")
+            )
+        )
+
+    finally:
+        driver.quit()
+    return resultados
 
 
 
