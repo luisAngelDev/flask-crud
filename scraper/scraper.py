@@ -52,6 +52,21 @@ def obtener_medicamento(
             )
         )
 
+        # seleccionar primera opción
+        opciones[0].click()
+
+        # =============================
+        # Select: Departamento
+        # =============================
+        select_departamento = Select(
+            wait.until(
+                EC.presence_of_element_located(
+                    (By.NAME, "codigoDepartamento")
+                )
+            )
+        )
+        select_departamento.select_by_value(departamento_value)
+
     finally:
         driver.quit()
     return resultados
