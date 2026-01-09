@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import time
@@ -66,6 +66,21 @@ def obtener_medicamento(
             )
         )
         select_departamento.select_by_value(departamento_value)
+
+        # Select: Departamento
+        if distrito_value:
+            wait.until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "select[name='codigoDistrito'] option")
+                )
+            )
+            select_distrito = Select(
+                driver.find_element(By.NAME, "codigoDistrito")
+            )
+            select_distrito.select_by_value(distrito_value)
+
+
+
 
     finally:
         driver.quit()
