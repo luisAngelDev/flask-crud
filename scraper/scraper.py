@@ -67,7 +67,7 @@ def obtener_medicamento(
         )
         select_departamento.select_by_value(departamento_value)
 
-        # Select: Departamento
+        # Select: distrito
         if distrito_value:
             wait.until(
                 EC.presence_of_element_located(
@@ -79,6 +79,14 @@ def obtener_medicamento(
             )
             select_distrito.select_by_value(distrito_value)
 
+
+        # Botón Buscar
+        btn_buscar = wait.until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//button[contains(text(),'Buscar')]")
+            )
+        )
+        btn_buscar.click()
 
 
 
