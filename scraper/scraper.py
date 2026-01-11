@@ -87,6 +87,18 @@ def obtener_medicamento(
             )
         )
         btn_buscar.click()
+        
+
+        # Esperar tabla resultados
+        wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "table tbody tr")
+            )
+        )
+
+        time.sleep(2)
+
+        filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
 
 
 
