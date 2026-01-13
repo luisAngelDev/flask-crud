@@ -55,9 +55,7 @@ def obtener_medicamento(
         # seleccionar primera opción
         opciones[0].click()
 
-        # =============================
         # Select: Departamento
-        # =============================
         select_departamento = Select(
             wait.until(
                 EC.presence_of_element_located(
@@ -114,14 +112,9 @@ def obtener_medicamento(
                 "fecha_vencimiento": columnas[5].text.strip(),
             })
 
-
-
     finally:
         driver.quit()
     return resultados
-
-
-
 
 
 if __name__ == "__main__":
