@@ -65,6 +65,20 @@ def obtener_medicamento(
         )
         select_departamento.select_by_value(departamento_value)
 
+
+        # Select: Provincia (opcional)
+        if provincia_value:
+            wait.until(
+                EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, "select[name='codigoProvincia'] option")
+                )
+            )
+            select_provincia = Select(
+                driver.find_element(By.NAME, "codigoProvincia")
+            )
+            select_provincia.select_by_value(provincia_value)
+            
+
         # Select: distrito
         if distrito_value:
             wait.until(
