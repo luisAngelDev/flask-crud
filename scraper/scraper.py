@@ -110,22 +110,7 @@ def obtener_medicamento(
 
         time.sleep(2)
 
-        filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
-
-        for fila in filas:
-            columnas = fila.find_elements(By.TAG_NAME, "td")
-            if len(columnas) < 6:
-                continue
-
-            resultados.append({
-                "producto": columnas[0].text.strip(),
-                "registro_sanitario": columnas[1].text.strip(),
-                "titular": columnas[2].text.strip(),
-                "forma_farmaceutica": columnas[3].text.strip(),
-                "estado": columnas[4].text.strip(),
-                "fecha_vencimiento": columnas[5].text.strip(),
-            })
-
+        
     finally:
         driver.quit()
     return resultados
