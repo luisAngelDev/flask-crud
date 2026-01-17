@@ -92,23 +92,7 @@ def obtener_medicamento(
             select_distrito.select_by_value(distrito_value)
 
 
-        # Botón Buscar
-        btn_buscar = wait.until(
-            EC.element_to_be_clickable(
-                (By.XPATH, "//button[contains(text(),'Buscar')]")
-            )
-        )
-        btn_buscar.click()
-        
-
-        # Esperar tabla resultados
-        wait.until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "table tbody tr")
-            )
-        )
-
-        time.sleep(2)
+       
 
         
     finally:
