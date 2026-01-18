@@ -19,7 +19,7 @@ def obtener_medicamento(
         ):
     
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
+    #options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
@@ -36,24 +36,31 @@ def obtener_medicamento(
         driver.get(BASE_URL)
         wait = WebDriverWait(driver, 20)
 
+        # esperar que Angular termine de renderizar
+        wait.until(
+            EC.presence_of_element_located((By.TAG_NAME, "body"))
+        )
+
+        # input del autocomplete (real)
         input_producto = wait.until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "ng-autocomplete input")
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "input[role='combobox']")
             )
         )
 
         input_producto.clear()
         input_producto.send_keys(producto)
 
-        # esperar lista autocomplete
         opciones = wait.until(
-            EC.presence_of_all_elements_located(
+            EC.visibility_of_all_elements_located(
                 (By.CSS_SELECTOR, ".ng-dropdown-panel .ng-option")
             )
         )
 
-        # seleccionar primera opción
-        opciones[0].click()
+        # click seguro
+        driver.execute_script("arguments[0].click();", opciones[0])
+
+        print("LLEGUE AQUI.")
 
         # Select: Departamento
         select_departamento = Select(
@@ -91,16 +98,47 @@ def obtener_medicamento(
             )
             select_distrito.select_by_value(distrito_value)
 
-
-       
-
         
+         # Botón Buscar
+        btn_buscar = wait.until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//button[contains(text(),'Buscar')]")
+            )
+        )
+        btn_buscar.click()
+
+
+        # Esperar tabla resultados
+        wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "table tbody tr")
+            )
+        )
+
+        time.sleep(2)
+
+        filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+
+        for fila in filas:
+            columnas = fila.find_elements(By.TAG_NAME, "td")
+            if len(columnas) < 6:
+                continue
+
+            resultados.append({
+                "producto": columnas[0].text.strip(),
+                "registro_sanitario": columnas[1].text.strip(),
+                "titular": columnas[2].text.strip(),
+                "forma_farmaceutica": columnas[3].text.strip(),
+                "estado": columnas[4].text.strip(),
+                "fecha_vencimiento": columnas[5].text.strip(),
+            })
+
     finally:
         driver.quit()
     return resultados
 
 
 if __name__ == "__main__":
-    data = obtener_medicamento("paracetamol")
+    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula")
     for d in data[:3]:
         print(d)
