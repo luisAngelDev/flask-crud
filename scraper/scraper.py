@@ -32,73 +32,62 @@ def obtener_medicamento(
 
     resultados = []
 
+    driver.get(BASE_URL)
+    wait = WebDriverWait(driver, 20)
+
     try:
-        driver.get(BASE_URL)
-        wait = WebDriverWait(driver, 20)
+
+        btn_cerrar = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((
+            By.XPATH,
+            "//button[contains(text(),'Cerrar')]"
+            ))
+        )
+        btn_cerrar.click()
+        print("MODAL CERRADO")
+
+
 
         # esperar que Angular termine de renderizar
         wait.until(
             EC.presence_of_element_located((By.TAG_NAME, "body"))
         )
+        print("PASE EL WAIT UNTIL")
 
-        # input del autocomplete (real)
+        #input del producto
         input_producto = wait.until(
-            EC.element_to_be_clickable(
-                (By.CSS_SELECTOR, "input[role='combobox']")
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "ng-autocomplete input[type='text']")
             )
         )
 
-        input_producto.clear()
-        input_producto.send_keys(producto)
+        driver.execute_script("arguments[0].scrollIntoView(true);", input_producto)
+        time.sleep(1)
+        driver.execute_script("arguments[0].focus();", input_producto)
 
-        opciones = wait.until(
+        print("INPUT PRODUCTO ENCONTRADO")
+
+        input_producto.clear()
+        for c in producto:
+            input_producto.send_keys(c)
+            time.sleep(0.05)
+
+        print("PASE EL ENVIO DE PRODUCTO AL AUTOCOMPLETE")
+
+        # esperar opciones
+        """ opciones = wait.until(
             EC.visibility_of_all_elements_located(
                 (By.CSS_SELECTOR, ".ng-dropdown-panel .ng-option")
             )
         )
 
-        # click seguro
-        driver.execute_script("arguments[0].click();", opciones[0])
-
-        print("LLEGUE AQUI.")
-
-        # Select: Departamento
-        select_departamento = Select(
-            wait.until(
-                EC.presence_of_element_located(
-                    (By.NAME, "codigoDepartamento")
-                )
-            )
-        )
-        select_departamento.select_by_value(departamento_value)
+        driver.execute_script("arguments[0].click();", opciones[0]) """
+        print("PRODUCTO SELECCIONADO")
 
 
-        # Select: Provincia (opcional)
-        if provincia_value:
-            wait.until(
-                EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, "select[name='codigoProvincia'] option")
-                )
-            )
-            select_provincia = Select(
-                driver.find_element(By.NAME, "codigoProvincia")
-            )
-            select_provincia.select_by_value(provincia_value)
-            
 
-        # Select: distrito
-        if distrito_value:
-            wait.until(
-                EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, "select[name='codigoDistrito'] option")
-                )
-            )
-            select_distrito = Select(
-                driver.find_element(By.NAME, "codigoDistrito")
-            )
-            select_distrito.select_by_value(distrito_value)
 
-        
+
          # Botón Buscar
         btn_buscar = wait.until(
             EC.element_to_be_clickable(
