@@ -86,6 +86,23 @@ def obtener_medicamento(
 
 
 
+        # -----------------------------
+        # SELECT DEPARTAMENTO
+        # -----------------------------
+        select_departamento = Select(
+            wait.until(
+                EC.element_to_be_clickable(
+                    (By.NAME, "codigoDepartamento")
+                )
+            )
+        )
+
+        # por value (recomendado)
+        select_departamento.select_by_value(departamento_value)
+        print(f"DEPARTAMENTO SELECCIONADO: {departamento_value}")
+
+
+        
 
 
          # Botón Buscar
@@ -128,6 +145,6 @@ def obtener_medicamento(
 
 
 if __name__ == "__main__":
-    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula")
+    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15")
     for d in data[:3]:
         print(d)
