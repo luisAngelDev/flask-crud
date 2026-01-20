@@ -86,7 +86,6 @@ def obtener_medicamento(
 
 
 
-        # -----------------------------
         # SELECT DEPARTAMENTO
         # -----------------------------
         select_departamento = Select(
@@ -102,7 +101,25 @@ def obtener_medicamento(
         print(f"DEPARTAMENTO SELECCIONADO: {departamento_value}")
 
 
-        
+
+
+        # ESPERAR PROVINCIAS
+        # -----------------------------
+        wait.until(
+            lambda d: len(
+                Select(d.find_element(By.NAME, "codigoProvincia")).options
+            ) > 1
+        )
+
+        select_provincia = Select(
+            driver.find_element(By.NAME, "codigoProvincia")
+        )
+
+        # 01 es provincia Lima
+        provincia_value = provincia_value or "01"
+
+        select_provincia.select_by_value(provincia_value)
+        print(f"PROVINCIA SELECCIONADA: {provincia_value}")
 
 
          # Botón Buscar
@@ -145,6 +162,6 @@ def obtener_medicamento(
 
 
 if __name__ == "__main__":
-    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15")
+    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15","01")
     for d in data[:3]:
         print(d)
