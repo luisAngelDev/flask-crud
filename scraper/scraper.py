@@ -122,6 +122,28 @@ def obtener_medicamento(
         print(f"PROVINCIA SELECCIONADA: {provincia_value}")
 
 
+        # -----------------------------
+        # ESPERAR DISTRITOS
+        # -----------------------------
+        wait.until(
+            lambda d: len(
+                Select(d.find_element(By.NAME, "codigoDistrito")).options
+            ) > 1
+        )
+        print("pase wait.until")
+
+        select_distrito = Select(
+            driver.find_element(By.NAME, "codigoDistrito")
+        )
+        print("pase select distrito")
+
+        # EJEMPLO: Cercado de Lima
+        distrito_value = distrito_value or "01"
+
+        select_distrito.select_by_value(distrito_value)
+        print(f"DISTRITO SELECCIONADO: {distrito_value}")
+
+
          # Botón Buscar
         btn_buscar = wait.until(
             EC.element_to_be_clickable(
@@ -162,6 +184,6 @@ def obtener_medicamento(
 
 
 if __name__ == "__main__":
-    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15","01")
+    data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15","01","01")
     for d in data[:3]:
         print(d)
