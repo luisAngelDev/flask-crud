@@ -148,11 +148,16 @@ def obtener_medicamento(
 
          # Botón Buscar
         btn_buscar = wait.until(
-            EC.element_to_be_clickable(
-                (By.XPATH, "//button[contains(text(),'Buscar')]")
+            EC.presence_of_element_located(
+                (By.XPATH, "//button[.//text()[contains(.,'Buscar')]]")
             )
         )
-        btn_buscar.click()
+
+        driver.execute_script("arguments[0].scrollIntoView(true);", btn_buscar)
+        time.sleep(0.5)
+        driver.execute_script("arguments[0].click();", btn_buscar)
+
+        print("CLICK EN BOTÓN BUSCAR")
 
 
         # Esperar tabla resultados
