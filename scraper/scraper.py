@@ -160,6 +160,16 @@ def obtener_medicamento(
         print("CLICK EN BOTÓN BUSCAR")
 
 
+        wait.until(
+            EC.any_of(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "table")),
+                EC.presence_of_element_located((By.XPATH, "//*[contains(text(),'No se encontraron')]"))
+            )
+        )
+
+        print("RESPUESTA DE BÚSQUEDA CARGADA")
+
+
         # Esperar tabla resultados
         wait.until(
             EC.presence_of_element_located(
