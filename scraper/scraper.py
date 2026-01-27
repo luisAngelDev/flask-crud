@@ -160,27 +160,35 @@ def obtener_medicamento(
         print("CLICK EN BOTÓN BUSCAR")
 
 
-        wait.until(
-            EC.any_of(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "table")),
-                EC.presence_of_element_located((By.XPATH, "//*[contains(text(),'No se encontraron')]"))
-            )
-        )
+        time.sleep(5)
+        with open("debug.html", "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+
+        print("HTML GUARDADO EN debug.html")
 
         print("RESPUESTA DE BÚSQUEDA CARGADA")
 
-
-        # Esperar tabla resultados
-        wait.until(
-            EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "table tbody tr")
-            )
-        )
-
         time.sleep(2)
 
-        
+        filas = driver.find_elements(By.XPATH, "//table//tr[td]")
 
+        print(f"FILAS DETECTADAS: {len(filas)}")
+
+        for fila in filas:
+            tds = fila.find_elements(By.TAG_NAME, "td")
+            if len(tds) < 6:
+                continue
+
+            resultados.append({
+                "producto": tds[0].text.strip(),
+                "registro_sanitario": tds[1].text.strip(),
+                "titular": tds[2].text.strip(),
+                "forma_farmaceutica": tds[3].text.strip(),
+                "estado": tds[4].text.strip(),
+                "fecha_vencimiento": tds[5].text.strip(),
+            })
+
+        
     finally:
         driver.quit()
     return resultados
