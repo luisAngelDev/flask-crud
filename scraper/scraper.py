@@ -172,22 +172,7 @@ def obtener_medicamento(
 
         filas = driver.find_elements(By.XPATH, "//table//tr[td]")
 
-        print(f"FILAS DETECTADAS: {len(filas)}")
-
-        for fila in filas:
-            tds = fila.find_elements(By.TAG_NAME, "td")
-            if len(tds) < 6:
-                continue
-
-            resultados.append({
-                "producto": tds[0].text.strip(),
-                "registro_sanitario": tds[1].text.strip(),
-                "titular": tds[2].text.strip(),
-                "forma_farmaceutica": tds[3].text.strip(),
-                "estado": tds[4].text.strip(),
-                "fecha_vencimiento": tds[5].text.strip(),
-            })
-
+        
         
     finally:
         driver.quit()
