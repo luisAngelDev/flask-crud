@@ -160,20 +160,16 @@ def obtener_medicamento(
         print("CLICK EN BOTÓN BUSCAR")
 
 
-        time.sleep(5)
-        with open("debug.html", "w", encoding="utf-8") as f:
-            f.write(driver.page_source)
+        print("ESPERANDO FILAS...")
 
-        print("HTML GUARDADO EN debug.html")
+        wait.until(
+            lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0
+        )
 
-        print("RESPUESTA DE BÚSQUEDA CARGADA")
+        print("TABLA YA TIENE RESULTADOS")
 
-        time.sleep(2)
-
-        filas = driver.find_elements(By.XPATH, "//table//tr[td]")
-
-        print(f"FILAS DETECTADAS: {len(filas)}")
-
+        # EXTRAER FILAS
+        filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
         
         
         
