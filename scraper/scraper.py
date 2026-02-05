@@ -170,7 +170,15 @@ def obtener_medicamento(
 
         # EXTRAER FILAS
         filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
-        
+
+        resultados = []
+
+        for fila in filas:
+            columnas = fila.find_elements(By.TAG_NAME, "td")
+
+            if len(columnas) < 7:
+                continue
+                
         
         
     finally:
