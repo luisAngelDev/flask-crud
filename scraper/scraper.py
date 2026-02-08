@@ -178,6 +178,18 @@ def obtener_medicamento(
 
             if len(columnas) < 7:
                 continue
+
+            resultados.append({
+                "producto": columnas[0].text.strip(),
+                "registro": columnas[1].text.strip(),
+                "titular": columnas[2].text.strip(),
+                "forma": columnas[3].text.strip(),
+                "estado": columnas[4].text.strip(),
+                "vencimiento": columnas[5].text.strip(),
+                "fabricante": columnas[6].text.strip(),
+            })
+
+        print("RESULTADOS EXTRAÍDOS:", len(resultados))
                 
         
         
