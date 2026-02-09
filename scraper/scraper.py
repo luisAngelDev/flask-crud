@@ -190,6 +190,15 @@ def obtener_medicamento(
             })
 
         print("RESULTADOS EXTRAÍDOS:", len(resultados))
+
+        wait.until(
+            EC.any_of(
+                lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0,
+                EC.presence_of_element_located(
+                    (By.XPATH, "//*[contains(text(),'No se encontraron')]")
+                )
+            )
+        )
                 
         
         
