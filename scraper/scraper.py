@@ -162,6 +162,20 @@ def obtener_medicamento(
 
         print("ESPERANDO FILAS...")
 
+        
+        # DEBUG: imprimir HTML actual
+        html = driver.page_source
+        print("LONGITUD HTML:", len(html))
+
+        # buscar si existe la palabra table
+        print("EXISTE <table> ?", "<table" in html)
+
+        # buscar si existe tbody
+        print("EXISTE <tbody> ?", "<tbody" in html)
+
+        # buscar si existe tr
+        print("EXISTE <tr> ?", "<tr" in html)
+
         wait.until(
             lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0
         )
