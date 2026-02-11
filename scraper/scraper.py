@@ -177,8 +177,16 @@ def obtener_medicamento(
         print("EXISTE <tr> ?", "<tr" in html)
 
         wait.until(
-            lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0
+            lambda d: d.execute_script("return document.readyState") == "complete"
         )
+        wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, "div.table-responsive")
+            )
+        )
+
+        filas = driver.find_elements(By.CSS_SELECTOR, "div.table-responsive table tbody tr")
+        print("FILAS:", len(filas))
 
         print("TABLA YA TIENE RESULTADOS")
 
