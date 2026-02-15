@@ -211,16 +211,16 @@ def obtener_medicamento(
                 "fabricante": columnas[6].text.strip(),
             })
 
-        # print("RESULTADOS EXTRAÍDOS:", len(resultados))
+        print("RESULTADOS EXTRAÍDOS:", len(resultados))
 
-        # wait.until(
-        #     EC.any_of(
-        #         lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0,
-        #         EC.presence_of_element_located(
-        #             (By.XPATH, "//*[contains(text(),'No se encontraron')]")
-        #         )
-        #     )
-        # )
+        wait.until(
+            EC.any_of(
+                lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0,
+                EC.presence_of_element_located(
+                    (By.XPATH, "//*[contains(text(),'No se encontraron')]")
+                )
+            )
+        )
                 
         
         
