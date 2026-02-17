@@ -211,7 +211,7 @@ def obtener_medicamento(
                 "fabricante": columnas[6].text.strip(),
             })
 
-        print("RESULTADOS EXTRAÍDOS:", len(resultados))
+       """  print("RESULTADOS EXTRAÍDOS:", len(resultados))
 
         wait.until(
             EC.any_of(
@@ -220,7 +220,7 @@ def obtener_medicamento(
                     (By.XPATH, "//*[contains(text(),'No se encontraron')]")
                 )
             )
-        )
+        ) """
                 
         
         
