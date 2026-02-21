@@ -223,7 +223,7 @@ def obtener_medicamento(
         )
                 
         
-"""         
+        
     finally:
         driver.quit()
     return resultados
@@ -232,4 +232,4 @@ def obtener_medicamento(
 if __name__ == "__main__":
     data = obtener_medicamento("PARACETAMOL 1000mg Tableta - Capsula", "15","01","LIMA")
     for d in data[:3]:
-        print(d) """
+        print(d)
