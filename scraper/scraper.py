@@ -190,26 +190,26 @@ def obtener_medicamento(
 
         print("TABLA YA TIENE RESULTADOS")
 
-        # # EXTRAER FILAS
-        # filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+        # EXTRAER FILAS
+        filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
 
-        # resultados = []
+        resultados = []
 
-        # for fila in filas:
-        #     columnas = fila.find_elements(By.TAG_NAME, "td")
+        for fila in filas:
+            columnas = fila.find_elements(By.TAG_NAME, "td")
 
-        #     if len(columnas) < 7:
-        #         continue
+            if len(columnas) < 7:
+                continue
 
-        #     resultados.append({
-        #         "producto": columnas[0].text.strip(),
-        #         "registro": columnas[1].text.strip(),
-        #         "titular": columnas[2].text.strip(),
-        #         "forma": columnas[3].text.strip(),
-        #         "estado": columnas[4].text.strip(),
-        #         "vencimiento": columnas[5].text.strip(),
-        #         "fabricante": columnas[6].text.strip(),
-        #     })
+            resultados.append({
+                "producto": columnas[0].text.strip(),
+                "registro": columnas[1].text.strip(),
+                "titular": columnas[2].text.strip(),
+                "forma": columnas[3].text.strip(),
+                "estado": columnas[4].text.strip(),
+                "vencimiento": columnas[5].text.strip(),
+                "fabricante": columnas[6].text.strip(),
+            })
 
         print("RESULTADOS EXTRAÍDOS:", len(resultados))
 
