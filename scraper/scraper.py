@@ -164,17 +164,17 @@ def obtener_medicamento(
 
         
         # DEBUG: imprimir HTML actual
-        html = driver.page_source
-        print("LONGITUD HTML:", len(html))
+        #html = driver.page_source
+        #print("LONGITUD HTML:", len(html))
 
         # buscar si existe la palabra table
-        print("EXISTE <table> ?", "<table" in html)
+        #print("EXISTE <table> ?", "<table" in html)
 
         # buscar si existe tbody
-        print("EXISTE <tbody> ?", "<tbody" in html)
+        #print("EXISTE <tbody> ?", "<tbody" in html)
 
         # buscar si existe tr
-        print("EXISTE <tr> ?", "<tr" in html)
+        #print("EXISTE <tr> ?", "<tr" in html)
 
         wait.until(
             lambda d: d.execute_script("return document.readyState") == "complete"
