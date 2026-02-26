@@ -86,7 +86,7 @@ def obtener_medicamento(
 
 
 
-        # SELECT DEPARTAMENTO
+        """ # SELECT DEPARTAMENTO
         # -----------------------------
         select_departamento = Select(
             wait.until(
@@ -222,7 +222,7 @@ def obtener_medicamento(
                 )
             )
         )
-                
+                 """
         
         
     finally:
