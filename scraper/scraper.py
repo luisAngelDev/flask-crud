@@ -75,7 +75,7 @@ def obtener_medicamento(
         print("PASE EL ENVIO DE PRODUCTO AL AUTOCOMPLETE")
 
         # esperar opciones
-        """ opciones = wait.until(
+        opciones = wait.until(
             EC.visibility_of_all_elements_located(
                 (By.CSS_SELECTOR, ".ng-dropdown-panel .ng-option")
             )
@@ -222,7 +222,7 @@ def obtener_medicamento(
                 )
             )
         )
-                 """
+                
         
         
     finally:
