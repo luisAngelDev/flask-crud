@@ -81,12 +81,12 @@ def obtener_medicamento(
             )
         )
 
-        driver.execute_script("arguments[0].click();", opciones[0]) """
+        driver.execute_script("arguments[0].click();", opciones[0]) 
         print("PRODUCTO SELECCIONADO")
 
 
 
-        """ # SELECT DEPARTAMENTO
+        # SELECT DEPARTAMENTO
         # -----------------------------
         select_departamento = Select(
             wait.until(
