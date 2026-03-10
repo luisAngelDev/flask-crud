@@ -180,11 +180,11 @@ def obtener_medicamento(
         wait.until(
             lambda d: d.execute_script("return document.readyState") == "complete"
         )
-        wait.until(
+       """  wait.until(
             EC.presence_of_element_located(
                 (By.CSS_SELECTOR, "div.table-responsive")
             )
-        )
+        ) """
 
         filas = driver.find_elements(By.CSS_SELECTOR, "div.table-responsive table tbody tr")
         print("FILAS:", len(filas))
