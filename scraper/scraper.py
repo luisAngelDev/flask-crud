@@ -196,7 +196,7 @@ def obtener_medicamento(
 
         resultados = []
 
-        """ for fila in filas:
+        for fila in filas:
             columnas = fila.find_elements(By.TAG_NAME, "td")
 
             if len(columnas) < 7:
@@ -221,7 +221,7 @@ def obtener_medicamento(
                     (By.XPATH, "//*[contains(text(),'No se encontraron')]")
                 )
             )
-        ) """
+        )
                 
         
         
