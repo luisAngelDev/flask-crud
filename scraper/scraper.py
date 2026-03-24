@@ -185,6 +185,7 @@ def obtener_medicamento(
                 (By.CSS_SELECTOR, "div.table-responsive")
             )
         )
+        print("logre enviar la data")
 
         filas = driver.find_elements(By.CSS_SELECTOR, "div.table-responsive table tbody tr")
         print("FILAS:", len(filas))
