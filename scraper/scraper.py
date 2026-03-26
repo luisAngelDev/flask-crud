@@ -187,10 +187,10 @@ def obtener_medicamento(
         )
         print("logre enviar la data")
 
-       """  filas = driver.find_elements(By.CSS_SELECTOR, "div.table-responsive table tbody tr")
+        filas = driver.find_elements(By.CSS_SELECTOR, "div.table-responsive table tbody tr")
         print("FILAS:", len(filas))
 
-        print("TABLA YA TIENE RESULTADOS") """
+        print("TABLA YA TIENE RESULTADOS")
 
         # EXTRAER FILAS
         filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
