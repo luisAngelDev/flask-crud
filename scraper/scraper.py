@@ -195,7 +195,10 @@ def obtener_medicamento(
         # EXTRAER FILAS
         filas = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
 
-        resultados = []
+
+        print("paso log de filas y combos sin resultado aun.")
+
+        """ resultados = []
 
         for fila in filas:
             columnas = fila.find_elements(By.TAG_NAME, "td")
@@ -222,7 +225,7 @@ def obtener_medicamento(
                     (By.XPATH, "//*[contains(text(),'No se encontraron')]")
                 )
             )
-        )
+        ) """
         
         
     finally:
