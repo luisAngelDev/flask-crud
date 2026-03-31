@@ -198,7 +198,7 @@ def obtener_medicamento(
 
         print("paso log de filas y combos sin resultado aun.")
 
-        """ resultados = []
+        resultados = []
 
         for fila in filas:
             columnas = fila.find_elements(By.TAG_NAME, "td")
@@ -225,7 +225,7 @@ def obtener_medicamento(
                     (By.XPATH, "//*[contains(text(),'No se encontraron')]")
                 )
             )
-        ) """
+        )
         
         
     finally:
