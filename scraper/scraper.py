@@ -200,7 +200,7 @@ def obtener_medicamento(
 
         resultados = []
 
-        for fila in filas:
+        """ for fila in filas:
             columnas = fila.find_elements(By.TAG_NAME, "td")
 
             if len(columnas) < 7:
@@ -214,18 +214,18 @@ def obtener_medicamento(
                 "estado": columnas[4].text.strip(),
                 "vencimiento": columnas[5].text.strip(),
                 "fabricante": columnas[6].text.strip(),
-            })
+            }) """
 
         print("RESULTADOS EXTRAÍDOS:", len(resultados))
 
-        wait.until(
+        """ wait.until(
             EC.any_of(
                 lambda d: len(d.find_elements(By.CSS_SELECTOR, "table tbody tr")) > 0,
                 EC.presence_of_element_located(
                     (By.XPATH, "//*[contains(text(),'No se encontraron')]")
                 )
             )
-        )
+        ) """
         
         
     finally:
