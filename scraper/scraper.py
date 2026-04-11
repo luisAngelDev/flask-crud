@@ -86,7 +86,7 @@ def obtener_medicamento(
 
 
 
-        # SELECT DEPARTAMENTO
+        """ # SELECT DEPARTAMENTO
         # -----------------------------
         select_departamento = Select(
             wait.until(
@@ -99,7 +99,7 @@ def obtener_medicamento(
         # por value (recomendado)
         select_departamento.select_by_value(departamento_value)
         print(f"DEPARTAMENTO SELECCIONADO: {departamento_value}")
-
+ """
 
 
 
